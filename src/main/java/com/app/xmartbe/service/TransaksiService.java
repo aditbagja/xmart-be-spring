@@ -3,7 +3,6 @@ package com.app.xmartbe.service;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,7 +44,7 @@ public class TransaksiService {
                 .orElseThrow(() -> new DataNotFoundException("Barang tidak tersedia"));
 
         Transaksi newTransaksi = Transaksi.builder()
-                .transaksiId(UUID.randomUUID().toString())
+                .transaksiId(request.getTransaksiId())
                 .customer(customer)
                 .barang(barang)
                 .hargaSatuan(barang.getHargaSatuan())

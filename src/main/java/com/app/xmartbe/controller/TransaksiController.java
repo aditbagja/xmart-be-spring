@@ -23,7 +23,7 @@ public class TransaksiController {
         return transaksiService.createTransaksi(request);
     }
 
-    @GetMapping("/user-transaksi")
+    @GetMapping("/customer-transaksi")
     public ResponseEntity<Object> getListTransaksi(@RequestParam String qrcode) {
         return transaksiService.getListTransaksi(qrcode);
     }

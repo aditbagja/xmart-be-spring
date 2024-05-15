@@ -12,12 +12,8 @@ import org.springframework.stereotype.Service;
 import com.app.xmartbe.dto.request.TransaksiRequestDTO;
 import com.app.xmartbe.dto.response.ResponseListDTO;
 import com.app.xmartbe.exception.classes.DataNotFoundException;
-import com.app.xmartbe.model.Barang;
-import com.app.xmartbe.model.Customer;
-import com.app.xmartbe.model.Transaksi;
-import com.app.xmartbe.repository.BarangRepository;
-import com.app.xmartbe.repository.CustomerRepository;
-import com.app.xmartbe.repository.TransaksiRepository;
+import com.app.xmartbe.model.*;
+import com.app.xmartbe.repository.*;
 
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;

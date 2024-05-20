@@ -8,15 +8,15 @@ pipeline {
         stage('Git Checkout') {
             steps {
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/aditbagja/xmart-be-spring']])
-                bat 'mvn clean install'
+                sh 'mvn clean install' // use sh for Linux OS, use bat for Windows OS
                 echo 'Git Checkout Completed'
             }
         }
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    bat 'mvn clean package'
-                    bat ''' mvn clean verify sonar:sonar -Dsonar.projectKey=xmart-be-spring -Dsonar.projectName='xmart-be-spring' -Dsonar.host.url=http://localhost:9000 '''
+                    sh 'mvn clean package'
+                    sh ''' mvn clean verify sonar:sonar -Dsonar.projectKey=xmart-be-spring -Dsonar.projectName='xmart-be-spring' -Dsonar.host.url=http://localhost:9000 '''
                     echo 'SonarQube Analysis Completed'
                 }
             }

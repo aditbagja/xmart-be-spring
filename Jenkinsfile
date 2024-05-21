@@ -33,7 +33,7 @@ pipeline {
         success {
             script {
                 withCredentials([string(credentialsId: 'telegram-token', variable: 'TOKEN'), string(credentialsId: 'chat-id', variable: 'CHAT_ID')]) {
-                    sh ''' curl -s -X POST https://api.telegram.org/bot${env.TOKEN}/sendMessage -d chat_id="${env.CHAT_ID}" -d text="${TEXT_SUCCESS_BUILD}" '''
+                    sh ''' curl -s -X POST https://api.telegram.org/bot"$TOKEN"/sendMessage -d chat_id="$CHAT_ID" -d text="${TEXT_SUCCESS_BUILD}" '''
                     echo "${TEXT_SUCCESS_BUILD}"
                 }
             }
@@ -41,7 +41,7 @@ pipeline {
         failure {
             script {
                 withCredentials([string(credentialsId: 'telegram-token', variable: 'TOKEN'), string(credentialsId: 'chat-id', variable: 'CHAT_ID')]) {
-                    sh ''' curl -s -X POST https://api.telegram.org/bot${env.TOKEN}/sendMessage -d chat_id="${env.CHAT_ID}" -d text="${TEXT_FAILURE_BUILD}" '''
+                    sh ''' curl -s -X POST https://api.telegram.org/bot"$TOKEN"/sendMessage -d chat_id="$CHAT_ID" -d text="${TEXT_FAILURE_BUILD}" '''
                     echo "${TEXT_FAILURE_BUILD}"
                 }
             }

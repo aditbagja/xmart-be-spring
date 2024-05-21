@@ -34,7 +34,7 @@ pipeline {
             script {
                 withCredentials([string(credentialsId: 'telegram-token', variable: 'TOKEN'), string(credentialsId: 'chat-id', variable: 'CHAT_ID')]) {
                     // sh ''' curl -s -X POST https://api.telegram.org/bot%TOKEN%/sendMessage -d chat_id="%CHAT_ID%" -d text="%TEXT_SUCCESS_BUILD%" '''
-                    echo "Telegram Token is %TOKEN%. Chat Id is %CHAT_ID. Text Success is %TEXT_SUCCESS_BUILD%"
+                    echo "Telegram Token is ${env.TOKEN}. Chat Id is ${env.CHAT_ID}. Text Success is ${TEXT_SUCCESS_BUILD}"
                 }
             }
         }
@@ -42,7 +42,7 @@ pipeline {
             script {
                 withCredentials([string(credentialsId: 'telegram-token', variable: 'TOKEN'), string(credentialsId: 'chat-id', variable: 'CHAT_ID')]) {
                     // sh ''' curl -s -X POST https://api.telegram.org/bot%TOKEN%/sendMessage -d chat_id="%CHAT_ID%" -d text="%TEXT_FAILURE_BUILD%" '''
-                    echo "Telegram Token is %TOKEN%. Chat Id is %CHAT_ID. Text Success is %TEXT_FAILURE_BUILD%"
+                    echo "Telegram Token is ${env.TOKEN}. Chat Id is ${env.CHAT_ID}. Text Success is ${TEXT_FAILURE_BUILD}"
                 }
             }
         }
